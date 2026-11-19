@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Firefly Cove — a garden that breathes with you</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <canvas id="waveform" aria-label="Live breathing and pulse waveforms from the SmartSpectra SDK"></canvas>
+
+  <header class="hud hud-top">
+    <div class="brand">
+      <h1>Firefly Cove</h1>
+      <p class="tagline">A night garden that breathes with you — and glows with your heartbeat.</p>
+    </div>
+    <div class="vitals" role="status" aria-live="polite">
+      <div class="vital">
+        <span class="vital-label">Pulse</span>
+        <span class="vital-value" id="pulseValue">—</span>
+        <span class="vital-unit">bpm</span>
+        <span class="conf" id="pulseConf" title="Measurement confidence"></span>
+      </div>
+      <div class="vital">
+        <span class="vital-label">Breathing</span>
+        <span class="vital-value" id="breathValue">—</span>
+        <span class="vital-unit">br/min</span>
+        <span class="conf" id="breathConf" title="Measurement confidence"></span>
+      </div>
+      <div class="vital">
+        <span class="vital-label">HRV</span>
+        <span class="vital-value" id="hrvValue">—</span>
+        <span class="vital-unit">ms</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="hud hud-bottom">
+    <div class="moonrise">
+      <div class="moonrise-label">
+        <span>Moonrise — breathe slowly (under 10 br/min) and hold it…</span>
+        <span id="calmPct">0%</span>
+      </div>
+      <div class="moonrise-track"><div class="moonrise-fill" id="calmFill"></div></div>
+    </div>
+    <div class="controls">
+      <span class="status-pill" id="statusPill">Waiting to start</span>
+      <button id="stopBtn" class="btn btn-ghost" hidden>Stop &amp; forget everything</button>
+    </div>
+  </div>
+
+  <div class="banner" id="errorBanner" role="alert" hidden></div>
+
+  <!-- Consent gate: nothing runs until the visitor explicitly opts in. -->
+  <div class="consent-overlay" id="consentOverlay">
+    <div class="consent-card">
+      <h2>Before the garden wakes up</h2>
+      <p>
+        Firefly Cove uses the <strong>Presage SmartSpectra SDK</strong> to measure your
+        <strong>pulse</strong> and <strong>breathing rate</strong> from a camera — no wearables,
+        no contact. The garden's fireflies glow with your heartbeat and its mist breathes
+        with you. It is a relaxation toy, <em>not</em> a medical device: it makes no diagnosis
+        and should never be used for medical decisions.
+      </p>
+      <ul class="consent-points">
+        <li><strong>Camera:</strong> the camera starts only when you press Begin, and only on this computer. You can stop it at any moment.</li>
+        <li><strong>Processing:</strong> the SDK analyses video on this device. Your video is never recorded, saved, or uploaded by this app.</li>
+        <li><strong>Data:</strong> measurements live only in this page's memory and are forgotten when you stop or close the tab. Nothing is stored, shared, or sent to any analytics or AI service.</li>
+        <li><strong>SDK telemetry:</strong> this app switches the SmartSpectra SDK's optional aggregate telemetry <strong>off</strong>. The SDK does contact Presage's servers to validate the developer API key — that is the only network call it makes on your behalf.</li>
+      </ul>
+      <p class="setup-note" id="setupNote" hidden>
+        ⚙️ <strong>Setup needed:</strong> no SmartSpectra API key is configured on the server yet.
+        Register for a free key at <span class="mono">physiology.presagetech.com</span>, put it in
+        <span class="mono">.env</span> as <span class="mono">SMARTSPECTRA_API_KEY</span>, and restart the server.
+      </p>
+      <label class="consent-check">
+        <input type="checkbox" id="consentCheck" />
+        <span>I understand and I consent to my camera being used for this experience.</span>
+      </label>
+      <div class="consent-actions">
+        <label class="source-picker">
+          Source
+          <select id="sourceSelect">
+            <option value="camera">Live camera</option>
+            <option value="file">Recorded video file (server-configured)</option>
+          </select>
+        </label>
+        <button id="beginBtn" class="btn btn-primary" disabled>Begin</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
