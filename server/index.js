@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Firefly Cove — local web server.
+ * Firefly Cove, local web server.
  *
  * Serves the browser experience and bridges it to the SmartSpectra SDK
  * session (server/spectra.js). The camera is owned by the SDK in THIS
@@ -28,7 +28,7 @@ function loadDotEnv(file) {
       }
     }
   } catch {
-    /* no .env file — environment variables alone are fine */
+    /* no .env file, environment variables alone are fine */
   }
 }
 loadDotEnv(path.join(__dirname, '..', '.env'));
@@ -181,7 +181,7 @@ server.listen(PORT, '127.0.0.1', () => {
   console.log(
     API_KEY
       ? 'SmartSpectra API key: configured.'
-      : 'SmartSpectra API key: NOT set — copy .env.example to .env and add your free key.'
+      : 'SmartSpectra API key: NOT set, copy .env.example to .env and add your free key.'
   );
   const cameras = safeCameras();
   console.log(

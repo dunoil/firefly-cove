@@ -1,6 +1,6 @@
 # Firefly Cove
 
-**A night garden that breathes with you — and glows with your heartbeat.**
+**A night garden that breathes with you, and glows with your heartbeat.**
 
 Firefly Cove is a camera-based human-sensing experience built on the
 [Presage SmartSpectra SDK](https://smartspectra.presagetech.com/). Sit in front of
@@ -11,8 +11,8 @@ your webcam and a quiet night cove comes alive with *your* physiology:
   across the water.
 - **The mist breathes with you.** The swell of the cove's water and fog is
   driven by your live chest-breathing waveform.
-- **Moonrise.** Breathe slowly — a stable breathing rate at or under
-  10 breaths/min — and hold it: the moon climbs, the stars come out, and the
+- **Moonrise.** Breathe slowly, a stable breathing rate at or under
+  10 breaths/min, and hold it: the moon climbs, the stars come out, and the
   fireflies turn gold. A small game about calming your own body, played with
   no controller at all.
 - **Your signals, visible.** A live HUD shows pulse (bpm), breathing rate
@@ -48,7 +48,7 @@ purposes only and have not been cleared by the FDA.
 ```
 
 - The SDK runs **in the Node server process** using the official
-  `@smartspectra/node-sdk` (v3.5.0), in its headless camera mode — the browser
+  `@smartspectra/node-sdk` (v3.5.0), in its headless camera mode, the browser
   never touches the camera directly.
 - `server/spectra.js` requests the SDK's **breathing + cardio metric bundles**
   (`breathingMetrics`, `cardioMetrics`), decodes each protobuf `Metrics`
@@ -77,7 +77,7 @@ purposes only and have not been cleared by the FDA.
 ### Prerequisites
 
 - Node.js 18 or newer
-- A webcam — **or** a short pre-recorded video of a face (see *Video-file mode*)
+- A webcam, **or** a short pre-recorded video of a face (see *Video-file mode*)
 - A free Presage Physiology API key (below)
 - On Linux, the native SDK uses Vulkan inference; a working Vulkan driver
   (including software rendering such as Mesa's lavapipe) is enough.
@@ -130,7 +130,7 @@ VIDEO_PATH=/path/to/face-video.mp4
 …or pick "Recorded video file" in the UI's source selector (the path still
 comes from the server config). The file replays at roughly real time. A
 20–60 second, well-lit, front-facing clip works best. This is also exactly how
-the demo video for the DEV post was recorded — see
+the demo video for the DEV post was recorded, see
 [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md).
 
 ## Consent & privacy design
@@ -170,18 +170,18 @@ firefly-cove/
 
 ## Troubleshooting
 
-- **`SmartSpectra authentication failed`** — the API key is missing, mistyped,
+- **`SmartSpectra authentication failed`**, the API key is missing, mistyped,
   or not yet activated. Re-check `.env` (no quotes/spaces) and restart.
-- **"Cameras detected: none"** — no webcam is visible to the SDK. Check the
+- **"Cameras detected: none"**, no webcam is visible to the SDK. Check the
   OS camera permission, close other apps using the camera, or use video-file
   mode.
-- **No metrics, hint says no face / too dark** — center your face, add light,
+- **No metrics, hint says no face / too dark**, center your face, add light,
   stay still for a few seconds. The validation pill is the SDK talking to you.
-- **Port already in use** — set `PORT` in `.env` to something free.
+- **Port already in use**, set `PORT` in `.env` to something free.
 
 ## Credits & license
 
 - Built with the Presage SmartSpectra SDK (`@smartspectra/node-sdk`, © Presage
-  Technologies, Inc., proprietary license — see the package's LICENSE/NOTICE).
+  Technologies, Inc., proprietary license, see the package's LICENSE/NOTICE).
 - Firefly Cove's own code is released under the [MIT License](LICENSE).
 - Created for the Presage SmartSpectra SDK Challenge on DEV (Nov 2026).

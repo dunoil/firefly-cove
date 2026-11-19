@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Firefly Cove — SmartSpectra SDK wrapper.
+ * Firefly Cove, SmartSpectra SDK wrapper.
  *
  * Owns the Presage SmartSpectra SDK lifecycle (one session at a time) and
  * translates the SDK's protobuf metrics into small plain-JSON events that the
@@ -14,10 +14,10 @@
  *   { type: 'session',    state: 'started' | 'stopped', source }
  *
  * Privacy choices made here, on purpose:
- *   - `enableTelemetry: false` — the SDK's aggregate session telemetry is
+ *   - `enableTelemetry: false`, the SDK's aggregate session telemetry is
  *     opt-out; we opt out so the app sends Presage nothing beyond the API-key
  *     authentication / metrics-authorization calls the SDK itself requires.
- *   - We never call `requestInsight()` — the optional LLM Insights feature is
+ *   - We never call `requestInsight()`, the optional LLM Insights feature is
  *     not used, so no vitals leave the machine for AI analysis.
  *   - Metrics live only in memory and are streamed to the local browser tab.
  *     Nothing is written to disk, logged, or shared.

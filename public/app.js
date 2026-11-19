@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Firefly Cove — browser experience.
+ * Firefly Cove, browser experience.
  *
  * Renders a night cove that responds to LIVE SmartSpectra signals streamed
  * from the local server over SSE:
@@ -126,13 +126,13 @@ events.onmessage = (msg) => {
       break;
     case 'status':
       if (state.running && event.name === 'running') {
-        statusPill.textContent = 'Measuring — sit centered and well-lit';
+        statusPill.textContent = 'Measuring, sit centered and well-lit';
       }
       break;
     case 'error':
       showError(
         event.code === 2
-          ? 'SmartSpectra authentication failed — check the API key in .env and restart the server.'
+          ? 'SmartSpectra authentication failed, check the API key in .env and restart the server.'
           : `SmartSpectra error: ${event.message}`
       );
       break;
@@ -206,15 +206,15 @@ function spawnRipple() {
 
 // ---------------------------------------------------------------- hud
 function fmt(value, digits) {
-  return typeof value === 'number' ? value.toFixed(digits) : '—';
+  return typeof value === 'number' ? value.toFixed(digits) : ', ';
 }
 
 function updateHud() {
-  $('pulseValue').textContent = state.pulse ? fmt(state.pulse.value, 0) : '—';
+  $('pulseValue').textContent = state.pulse ? fmt(state.pulse.value, 0) : ', ';
   $('breathValue').textContent = state.breathing
     ? fmt(state.breathing.value, 1)
-    : '—';
-  $('hrvValue').textContent = state.hrv ? fmt(state.hrv.value, 0) : '—';
+    : ', ';
+  $('hrvValue').textContent = state.hrv ? fmt(state.hrv.value, 0) : ', ';
   $('pulseConf').style.width = state.pulse?.confidence
     ? `${Math.min(100, state.pulse.confidence)}%`
     : '0%';
@@ -300,7 +300,7 @@ function drawScene(now) {
   }
   sctx.globalAlpha = 1;
 
-  // moon — rises with calm progress
+  // moon, rises with calm progress
   const moonX = W * 0.78;
   const moonY = H * (0.62 - 0.42 * calm);
   const glow = sctx.createRadialGradient(moonX, moonY, 4, moonX, moonY, 90);
@@ -324,7 +324,7 @@ function drawScene(now) {
   sctx.closePath();
   sctx.fill();
 
-  // breathing mist / water — swells with the chest-breathing waveform
+  // breathing mist / water, swells with the chest-breathing waveform
   const swell = state.breathSwell; // 0..1 from the live trace
   for (let layer = 0; layer < 3; layer++) {
     const baseY = H * (0.8 + layer * 0.055);
@@ -359,7 +359,7 @@ function drawScene(now) {
     sctx.stroke();
   }
 
-  // fireflies — glow follows the pulse waveform
+  // fireflies, glow follows the pulse waveform
   const glowLevel = state.pulseSwell;
   for (const f of fireflies) {
     f.x += f.vx / 60 + Math.sin(t * 0.7 + f.phase) * 0.0004;
