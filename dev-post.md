@@ -17,9 +17,8 @@ tags: devchallenge, presagechallenge
 
 It's built for one person, alone, taking a minute to slow down. No accounts, no wearables, nothing to install beyond the project itself.
 
-<!-- SCREENSHOT PLACEHOLDER: consent card -->
-<!-- SCREENSHOT PLACEHOLDER: the cove while measuring, HUD + waveforms visible -->
-<!-- SCREENSHOT PLACEHOLDER: moonrise complete, golden fireflies -->
+![The consent card: nothing is measured until the visitor ticks the box and presses Begin](https://raw.githubusercontent.com/dunoil/firefly-cove/main/docs/images/consent.png)
+![The cove mid-session: pulse 75 bpm and breathing 16.0 br/min on the HUD, both waveforms drawing, a heartbeat ripple crossing the water](https://raw.githubusercontent.com/dunoil/firefly-cove/main/docs/images/measuring.png)
 
 ## Demo
 
