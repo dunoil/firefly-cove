@@ -22,11 +22,9 @@ It's built for one person, alone, taking a minute to slow down. No accounts, no 
 
 ## Demo
 
-<!-- DEMO VIDEO: paste the YouTube link / DEV video embed here.
-     The video must show the live Presage signals in action: consent flow,
-     validation hints, HUD numbers settling, waveforms, fireflies reacting,
-     the Moonrise climb, and Stop clearing everything.
-     Recording guide: docs/DEMO_SCRIPT.md in the repo. -->
+{% youtube cDciHtuf5eg %}
+
+Watch it on YouTube: https://youtu.be/cDciHtuf5eg
 
 ## Code
 
